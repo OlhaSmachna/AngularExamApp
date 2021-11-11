@@ -1,0 +1,105 @@
+.container{
+  max-width: unset !important;
+  background-image: url("https://preview.redd.it/wabt2ui2s7s51.png?width=1980&format=png&auto=webp&s=b35aadf6ddd5357568aa899dd8d52a848e47d319");
+  background-repeat: no-repeat;
+
+  .col-sm-12{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+  }
+}
+
+
+.card{
+  width: 300px !important;
+  height: 500px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  overflow: hidden;
+  background: inherit;
+
+  p{
+    margin-bottom: 3px;
+  }
+  img{
+    z-index: 1;
+  }
+  .card-body{
+    background-color: white;
+  }
+  &:before{
+    content: '';
+    width: 300px;
+    height: 500px;
+    background: inherit;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 200px rgba(255,255,255,0.5);
+    filter: blur(30px);
+  }
+  &:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+}
+
+
+@keyframes northern {
+  0% {
+    transform: translate(5%, -2%);
+  }
+
+  25% {
+    transform: translate(10%, 7%);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: translate(7%, -2%);
+  }
+
+  85% {
+    transform: translate(6%, 3%) rotate(12deg);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.auroral-northern {
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  animation-name: northern;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background: linear-gradient(10deg, #a1d9b4 20%, #32988a 40%, #000e3c 70%);
+}
+
+
+
+
+
