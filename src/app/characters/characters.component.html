@@ -1,0 +1,20 @@
+<div class="auroral-northern"></div>
+<div class="auroral-stars"></div>
+
+<div class="container page-content" style="z-index: 100; padding-top: 64px">
+
+  <div class="row" >
+    <div class="col-sm-12 col-md">
+
+      <div *ngFor="let ch of characters" class="card" (click)="cardSelect(ch.id)">
+        <img class="card-img-top" src="./assets/images/characters/cut/{{ch.name.toLowerCase()}}.png" alt="{{ch.name}}">
+        <div class="card-body">
+          <p class="card-text">{{ch.name}} <img *ngFor="let star of ch.rarity" class="star" src="assets/images/{{ch.rarity.length}}.png" alt="rarity icon"> </p>
+          <p class="card-text">Element: {{ch.element_name}}</p>
+          <p class="card-text">Region: {{ch.region_name}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.navbar{
+  z-index: 1000;
+}
+.navbar-brand {
+  background-image: url("../../assets/images/icon.png");
+  background-position: 16px 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 66px;
+  height: 48px;
+  padding-bottom: 0;
+  padding-top: 8px;
+  padding-right: 16px;
+
+  &:hover{
+    background-color: rgba(180, 190, 203, 0.4);
+  }
+}
+
+.navbar-nav .nav-item:hover, .navbar-toggler:hover {
+  background-color: rgba(180, 190, 203, 0.4);
+}
+
+.collapse{
+  justify-content: right;
+}
+
+.dropdown-menu{
+  left: -60px;
+}

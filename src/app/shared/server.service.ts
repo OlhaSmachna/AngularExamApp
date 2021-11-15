@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -24,19 +24,35 @@ export class ServerService {
     });
   }
 
-  getChars() {
-    return this.request('GET', `${environment.serverUrl}/event`);
+  login(login: string, password: string) {
+    return this.request('POST', `${environment.serverUrl}/login/${login}&${password}`).catch((err: HttpErrorResponse) => {
+      console.error('An error occurred:', err.error);
+      //go to err page
+    });
   }
 
-  // createEvent(event: { name: any; description: any; date: any; }) {
+  getChars() {
+    return this.request('GET', `${environment.serverUrl}/characters`).catch((err: HttpErrorResponse) => {
+      console.error('An error occurred:', err.error);
+      //go to err page
+    });
+  }
+  getCharInfo(id: number) {
+    return this.request('GET', `${environment.serverUrl}/character/${id}`).catch((err: HttpErrorResponse) => {
+      console.error('An error occurred:', err.error);
+      //go to err page
+    });
+  }
+
+  // createChars(event: { name: any; description: any; date: any; }) {
   //   return this.request('POST', `${environment.serverUrl}/event`, event);
   // }
   //
-  // updateEvent(event: { id: any; name?: any; description?: any; date?: any; }) {
+  // updateChars(event: { id: any; name?: any; description?: any; date?: any; }) {
   //   return this.request('PUT', `${environment.serverUrl}/event/${event.id}`, event);
   // }
   //
-  // deleteEvent(event: { id: any; }) {
+  // deleteChars(event: { id: any; }) {
   //   return this.request('DELETE', `${environment.serverUrl}/event/${event.id}`);
   // }
 }

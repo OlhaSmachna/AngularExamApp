@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-xl-9 mx-auto d-flex justify-content-center">
+      <div class="card flex-row border-0 shadow rounded-3 overflow-hidden">
+        <div class="card-img-left d-none d-md-flex">
+        </div>
+        <div class="card-body p-4 p-sm-5">
+          <h3 class="login-heading mb-4">Welcome back, Traveller!</h3>
+
+                            <div class="form-floating mb-3">
+                              <input [(ngModel)]="name" type="email" class="form-control" id="floatingInput" placeholder="Login">
+                              <label for="floatingInput">Login</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                              <input [(ngModel)]="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                              <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="d-grid">
+                              <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" (click)="login()">Sign in</button>
+                              <div class="text-center">
+                                <a class="small" href="#">Dont have an account?</a>
+                              </div>
+                            </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

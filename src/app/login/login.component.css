@@ -1,0 +1,29 @@
+.container,.row,.col-lg-10{
+  height: 100vh;
+}
+.card-body{
+  padding: 144px 48px !important;
+}
+
+login-heading {
+ font-weight: 300;
+}
+
+.card-img-left {
+  width: 45%;
+  background-image: url('https://cutewallpaper.org/22/aether-genshin-impact-wallpapers/traveler-aether-and-lumine-de-genshin-impact-wallpaper-4k-ultra-hd-id7761.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.d-flex{
+  flex-direction: column;
+}
+
+

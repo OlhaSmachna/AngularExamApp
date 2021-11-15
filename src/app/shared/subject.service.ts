@@ -1,42 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {environment} from "../../environments/environment";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ServerService {
+@Injectable()
+export class DataService {
+  updates$ = new BehaviorSubject<number[]>([]);
 
-  constructor(private http: HttpClient) {
+  constructor() {}
+
+  postData(value: number): void {
+    this.updates$.value.push(value);
+    this.updates$.next([...this.updates$.value]);
   }
-
-  private async request(method: string, url: string, data?: any) {
-
-    const result = this.http.request(method, url, {
-      body: data,
-      responseType: 'json',
-      observe: 'body',
-      headers: {
-      }
-    });
-    return new Promise((resolve, reject) => {
-      result.subscribe(resolve, reject);
-    });
-  }
-
-  getChars() {
-    return this.request('GET', `${environment.serverUrl}/event`);
-  }
-
-  // createChars(event: { name: any; description: any; date: any; }) {
-  //   return this.request('POST', `${environment.serverUrl}/event`, event);
-  // }
-  //
-  // updateChars(event: { id: any; name?: any; description?: any; date?: any; }) {
-  //   return this.request('PUT', `${environment.serverUrl}/event/${event.id}`, event);
-  // }
-  //
-  // deleteChars(event: { id: any; }) {
-  //   return this.request('DELETE', `${environment.serverUrl}/event/${event.id}`);
-  // }
 }
