@@ -21,6 +21,23 @@
   overflow: hidden;
   background: inherit;
 
+  .bookmark{
+    display: block;
+    width: 50px;
+    min-height: 50px;
+    background-image: url("../../assets/images/bookmark.png");
+    background-size: cover;
+    background-position: bottom;
+    z-index: 5;
+    position: absolute;
+    left: 10px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    padding: 10px 0 20px 0;
+    font-style: italic;
+  }
+
   p{
     margin-bottom: 3px;
     clear: both;

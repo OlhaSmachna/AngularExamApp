@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {fromEvent} from "rxjs";
-import {filter, map} from "rxjs/operators";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +8,11 @@ import {filter, map} from "rxjs/operators";
 })
 export class NavbarComponent implements OnInit {
 
-  public message$:any;
-  constructor() { }
+  loggedIn:any=sessionStorage.getItem('token');
+  constructor(private logger:UserService) { }
 
   ngOnInit(): void {
-    this.message$ = fromEvent<StorageEvent>(window, "storage").pipe(
-      filter(event => event.storageArea === sessionStorage),
-      filter(event => event.key === "message"),
-      map(event => event.newValue)
-    );
+    this.logger.isLoggedIn().subscribe(updates => {this.loggedIn = updates;});
   }
 
   ev($event: MouseEvent) {
@@ -25,6 +20,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.setItem('token', '');
+    this.logger.logOut();
   }
 }

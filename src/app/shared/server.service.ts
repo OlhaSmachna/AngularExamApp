@@ -32,21 +32,34 @@ export class ServerService {
   }
 
   getChars() {
-    return this.request('GET', `${environment.serverUrl}/characters`).catch((err: HttpErrorResponse) => {
+    let token=sessionStorage.getItem('token');
+    return this.request('GET', `${environment.serverUrl}/characters/${token}`).catch((err: HttpErrorResponse) => {
       console.error('An error occurred:', err.error);
       //go to err page
     });
   }
   getCharInfo(id: number) {
-    return this.request('GET', `${environment.serverUrl}/character/${id}`).catch((err: HttpErrorResponse) => {
+    let token=sessionStorage.getItem('token');
+    return this.request('GET', `${environment.serverUrl}/character/info/${id}&${token}`).catch((err: HttpErrorResponse) => {
+      console.error('An error occurred:', err.error);
+      //go to err page
+    });
+  }
+  getCharMats(id: number) {
+    let token=sessionStorage.getItem('token');
+    return this.request('GET', `${environment.serverUrl}/character/materials/${id}&${token}`).catch((err: HttpErrorResponse) => {
       console.error('An error occurred:', err.error);
       //go to err page
     });
   }
 
-  // createChars(event: { name: any; description: any; date: any; }) {
-  //   return this.request('POST', `${environment.serverUrl}/event`, event);
-  // }
+  signup(login: string, password: string) {
+    return this.request('POST', `${environment.serverUrl}/signup/${login}&${password}`).catch((err: HttpErrorResponse) => {
+      console.error('An error occurred:', err.error);
+      //go to err page
+    });
+  }
+
   //
   // updateChars(event: { id: any; name?: any; description?: any; date?: any; }) {
   //   return this.request('PUT', `${environment.serverUrl}/event/${event.id}`, event);

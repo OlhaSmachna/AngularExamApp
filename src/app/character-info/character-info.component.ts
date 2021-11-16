@@ -3,6 +3,7 @@ import {ServerService} from "../shared/server.service";
 import {Router} from "@angular/router";
 import {DataService} from "../shared/subject.service";
 import { HostListener } from "@angular/core";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-characters-info',
@@ -20,6 +21,7 @@ export class CharacterInfoComponent implements OnInit {
     crown: any;
     mora: any;
     exp_book: any;
+    total_progress:number;
   }> = [];
   updates: number[] = [];
   character_id:number=0;
@@ -63,7 +65,7 @@ export class CharacterInfoComponent implements OnInit {
   // currentChar: any = {id: any; name: any; rarity: any; element_name: any; region_name: any};
   public image_size: string = '';
 
-  constructor(private server: ServerService, private router:Router, private dataService: DataService) {
+  constructor(private server: ServerService, private router:Router, private dataService: DataService, private logger:UserService) {
     this.onResize();
   }
 
@@ -90,18 +92,28 @@ export class CharacterInfoComponent implements OnInit {
       if(response)
       {
         console.log('Response', response);
-        this.characters = response.map((ch: { id: any; name: any; rarity: any; element_name: any; region_name: any;
-          primary_material: any;
-          elemental_stone: any;
-          local_material: any;
-          secondary_material: any;
-          talent_book: any;
-          talent_material: any;
-          crown: any;
-          mora: any;}) => {
-          ch.rarity=Array(ch.rarity);
-          return ch;
-        });
+        if(response==-1)
+        {
+          this.logger.logOut();
+          this.router.navigate(['/login']);
+        }
+        else {
+          this.characters = response.map((ch: { id: any; name: any; rarity: any; element_name: any; region_name: any;
+            primary_material: any;
+            elemental_stone: any;
+            local_material: any;
+            secondary_material: any;
+            talent_book: any;
+            talent_material: any;
+            crown: any;
+            mora: any;
+            total_progress:number;}) => {
+            ch.rarity=Array(ch.rarity);
+            if(ch.id==19)ch.total_progress=50;
+            else ch.total_progress=0;
+            return ch;
+          });
+        }
       }
     });
   }

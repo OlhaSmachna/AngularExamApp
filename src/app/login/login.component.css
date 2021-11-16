@@ -2,7 +2,11 @@
   height: 100vh;
 }
 .card-body{
-  padding: 144px 48px !important;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
 login-heading {
@@ -11,9 +15,15 @@ login-heading {
 
 .card-img-left {
   width: 45%;
-  background-image: url('https://cutewallpaper.org/22/aether-genshin-impact-wallpapers/traveler-aether-and-lumine-de-genshin-impact-wallpaper-4k-ultra-hd-id7761.jpg');
   background-size: cover;
   background-position: center;
+}
+
+.login-image{
+  background-image: url('https://cutewallpaper.org/22/aether-genshin-impact-wallpapers/traveler-aether-and-lumine-de-genshin-impact-wallpaper-4k-ultra-hd-id7761.jpg');
+}
+.signup-image{
+  background-image: url('https://pbs.twimg.com/media/EyZEaYDXIAA05Kk.jpg');
 }
 
 .btn-login {
@@ -26,4 +36,8 @@ login-heading {
   flex-direction: column;
 }
 
-
+.alert{
+  position: fixed;
+  right: 5px;
+  top: 70px;
+}

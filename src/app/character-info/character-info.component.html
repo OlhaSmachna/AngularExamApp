@@ -9,7 +9,7 @@
         <div class="bookmark" style="background-image: url('./assets/images/bookmark.png')">
           <img id="region_logo" src="./assets/images/regions/{{ch.region_name.toLowerCase()}}.png" alt="{{ch.region_name}} logo" placement="right" tooltip="{{ch.region_name}}">
           <img id="element_logo" src="./assets/images/elements/{{ch.element_name.toLowerCase()}}.png" alt="{{ch.element_name}} logo" placement="right" tooltip="{{ch.element_name}}">
-          <div id="progress" placement="right" tooltip="Total progress"><i>100%</i></div>
+          <div id="progress" placement="right" tooltip="Total progress">{{ch.total_progress}}%</div>
 
 
 
@@ -26,11 +26,13 @@
         <div class="material-block">
           <div class="material">
             <img src="./assets/images/materials/{{ch.exp_book}}.png" alt="{{ch.exp_book}}" placement="bottom" tooltip="{{ch.exp_book}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.lvl.exp_books}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.lvl.exp_books}}" [attr.maxlength]="materials_count_layout.lvl.exp_books.toString().length">
+            <span><b> / </b>{{materials_count_layout.lvl.exp_books}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/{{ch.mora}}.png" alt="{{ch.mora}}" placement="bottom" tooltip="{{ch.mora}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.lvl.mora}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.lvl.mora}}" [attr.maxlength]="materials_count_layout.lvl.mora.toString().length">
+            <span><b> / </b>{{materials_count_layout.lvl.mora}}</span>
           </div>
         </div>
 
@@ -39,49 +41,59 @@
         <div class="material-block">
           <div class="material">
             <img src="./assets/images/materials/primary_material/{{ch.primary_material}}_q1.png" alt="{{ch.primary_material}} (Sliver)" placement="bottom" tooltip="{{ch.primary_material}} (Sliver)">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.primary_material.q1}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.primary_material.q1}}" [attr.maxlength]="materials_count_layout.ascension.primary_material.q1.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.primary_material.q1}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/primary_material/{{ch.primary_material}}_q2.png" alt="{{ch.primary_material}} (Fragment)" placement="bottom" tooltip="{{ch.primary_material}} (Fragment)">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.primary_material.q2}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.primary_material.q2}}" [attr.maxlength]="materials_count_layout.ascension.primary_material.q2.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.primary_material.q2}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/primary_material/{{ch.primary_material}}_q3.png" alt="{{ch.primary_material}} (Chunk)" placement="bottom" tooltip="{{ch.primary_material}} (Chunk)">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.primary_material.q3}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.primary_material.q3}}" [attr.maxlength]="materials_count_layout.ascension.primary_material.q3.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.primary_material.q3}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/primary_material/{{ch.primary_material}}_q4.png" alt="{{ch.primary_material}} (Gemstone)" placement="bottom" tooltip="{{ch.primary_material}} (Gemstone)">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.primary_material.q4}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.primary_material.q4}}" [attr.maxlength]="materials_count_layout.ascension.primary_material.q4.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.primary_material.q4}}</span>
           </div>
 
           <div class="break"></div>
 
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q1.png" alt="{{ch.secondary_material}} &#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.secondary_material.q1}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.secondary_material.q1}}" [attr.maxlength]="materials_count_layout.ascension.secondary_material.q1.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.secondary_material.q1}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q2.png" alt="{{ch.secondary_material}} &#9733;&#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.secondary_material.q2}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.secondary_material.q2}}" [attr.maxlength]="materials_count_layout.ascension.secondary_material.q2.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.secondary_material.q2}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q3.png" alt="{{ch.secondary_material}} &#9733;&#9733;&#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;&#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.secondary_material.q3}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.secondary_material.q3}}" [attr.maxlength]="materials_count_layout.ascension.secondary_material.q3.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.secondary_material.q3}}</span>
           </div>
 
           <div class="break"></div>
 
           <div class="material">
             <img src="./assets/images/materials/elemental_stone/{{ch.elemental_stone}}.png" alt="{{ch.elemental_stone}}" placement="bottom" tooltip="{{ch.elemental_stone}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.elemental_stone}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.elemental_stone}}" [attr.maxlength]="materials_count_layout.ascension.elemental_stone.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.elemental_stone}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/local_material/{{ch.local_material}}.png" alt="{{ch.local_material}}" placement="bottom" tooltip="{{ch.local_material}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.local_material}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.local_material}}" [attr.maxlength]="materials_count_layout.ascension.local_material.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.local_material}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/{{ch.mora}}.png" alt="{{ch.mora}}" placement="bottom" tooltip="{{ch.mora}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.ascension.mora}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.ascension.mora}}" [attr.maxlength]="materials_count_layout.ascension.mora.toString().length">
+            <span><b> / </b>{{materials_count_layout.ascension.mora}}</span>
           </div>
         </div>
 
@@ -90,45 +102,54 @@
         <div class="material-block">
           <div class="material">
             <img src="./assets/images/materials/talent_book/{{ch.talent_book}}_q1.png" alt="Teachings of {{ch.talent_book}}" placement="bottom" tooltip="Teachings of {{ch.talent_book}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.talent_book.q1}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.talent_book.q1}}" [attr.maxlength]="materials_count_layout.talents.talent_book.q1.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.talent_book.q1}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/talent_book/{{ch.talent_book}}_q2.png" alt="Guide to {{ch.talent_book}}" placement="bottom" tooltip="Guide to {{ch.talent_book}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.talent_book.q2}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.talent_book.q2}}" [attr.maxlength]="materials_count_layout.talents.talent_book.q2.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.talent_book.q2}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/talent_book/{{ch.talent_book}}_q3.png" alt="Philosophies of {{ch.talent_book}}" placement="bottom" tooltip="Philosophies of {{ch.talent_book}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.talent_book.q3}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.talent_book.q3}}" [attr.maxlength]="materials_count_layout.talents.talent_book.q3.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.talent_book.q3}}</span>
           </div>
 
           <div class="break"></div>
 
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q1.png" alt="{{ch.secondary_material}} &#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.secondary_material.q1}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.secondary_material.q1}}" [attr.maxlength]="materials_count_layout.talents.secondary_material.q1.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.secondary_material.q1}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q2.png" alt="{{ch.secondary_material}} &#9733;&#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.secondary_material.q2}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.secondary_material.q2}}" [attr.maxlength]="materials_count_layout.talents.secondary_material.q2.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.secondary_material.q2}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/secondary_material/{{ch.secondary_material}}_q3.png" alt="{{ch.secondary_material}} &#9733;&#9733;&#9733;&#9733;" placement="bottom" tooltip="{{ch.secondary_material}} &#9733;&#9733;&#9733;&#9733;">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.secondary_material.q3}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.secondary_material.q3}}" [attr.maxlength]="materials_count_layout.talents.secondary_material.q3.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.secondary_material.q3}}</span>
           </div>
 
           <div class="break"></div>
 
           <div class="material">
             <img src="./assets/images/materials/talent_material/{{ch.talent_material}}.png" alt="{{ch.talent_material}}" placement="bottom" tooltip="{{ch.talent_material}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.talent_material}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.talent_material}}" [attr.maxlength]="materials_count_layout.talents.talent_material.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.talent_material}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/{{ch.crown}}.png" alt="{{ch.crown}}" placement="bottom" tooltip="{{ch.crown}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.crown}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.crown}}" [attr.maxlength]="materials_count_layout.talents.crown.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.crown}}</span>
           </div>
           <div class="material">
             <img src="./assets/images/materials/{{ch.mora}}.png" alt="{{ch.mora}}" placement="bottom" tooltip="{{ch.mora}}">
-            <span><i class="text-secondary">x</i>{{materials_count_layout.talents.mora}}</span>
+            <input type="number" class="form-control" value="{{materials_count_layout.talents.mora}}" [attr.maxlength]="materials_count_layout.talents.mora.toString().length">
+            <span><b> / </b>{{materials_count_layout.talents.mora}}</span>
           </div>
         </div>
       </div>
@@ -138,6 +159,5 @@
     </div>
   </div>
 </div>
-
 
 
