@@ -9,19 +9,25 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {DataService} from "./shared/subject.service";
 import {ComponentLoaderFactory, PositioningService, TooltipConfig} from "ngx-bootstrap";
 import {UserService} from "./shared/user.service";
+import { Err404Component } from './err404/err404.component';
+import { Err500Component } from './err500/err500.component';
 
 const routes: Routes = [
   {path: 'login', loadChildren: () => import('./login/login.module').then(m=>m.LoginModule)},
   {path: 'signup', loadChildren: () => import('./signup/signup.module').then(m=>m.SignupModule)},
   {path: 'characters', loadChildren: () => import('./characters/characters.module').then(m=>m.CharactersModule),canActivate:[AuthGuard],},
   {path: 'character', loadChildren: () => import('./character-info/character-info.module').then(m=>m.CharacterInfoModule),canActivate:[AuthGuard]},
-  {path: '', redirectTo: 'characters', pathMatch: 'full'}
+  {path: '', redirectTo: 'characters', pathMatch: 'full'},
+  {path: 'err500', component: Err500Component},
+  {path: '**', component: Err404Component},
 ]
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
+        Err404Component,
+        Err500Component,
     ],
     imports: [
         BrowserModule,

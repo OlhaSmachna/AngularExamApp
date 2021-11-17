@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
   }
 
   public signup():void{
-    if(this.isEmptyOrSpaces(this.name) && !this.name.includes('/'))
+    if(this.isEmptyOrSpaces(this.name))
     {
       this.nameValid=true;
       this.invalidNameClass='';
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
       this.invalidNameClass='is-invalid';
     }
 
-    if(this.isEmptyOrSpaces(this.password) && !this.password.includes('/'))
+    if(this.isEmptyOrSpaces(this.password))
     {
       this.passwordValid=true;
       this.invalidPasswordClass='';
@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
     {
       this.server.signup(this.name, this.password).then((response: any) => {
         if(response){
-          this.logger.logIn(response.toString());
+          this.logger.logIn(response);
           this.router.navigate(['characters']);
         }
         else {
@@ -74,7 +74,7 @@ export class SignupComponent implements OnInit {
   }
 
   isEmptyOrSpaces(str:string){
-    return !(str === null || str.match(/^ *$/) !== null);
+    return !(str === null || str.match(/^ *$/) !== null) && !str.includes('/');
   }
   myAlert(str:string)
   {

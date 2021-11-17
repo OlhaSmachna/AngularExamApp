@@ -48,6 +48,30 @@
       h1{
         margin: 10px 0 20px 0;
       }
+
+      .save_btn{
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        background-position: bottom;
+        z-index: 5;
+        position: fixed;
+        margin-top: -50px;
+        cursor: pointer;
+        padding-top: 15px;
+
+        #save_text{
+          font-size: 30px;
+          text-align: center;
+          font-style: italic;
+          font-weight: bold;
+
+          background: -webkit-linear-gradient( #BCA075, #FFF6B9);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
     }
     .ch-image{
       z-index: 2;
@@ -144,6 +168,15 @@
   .ch-info{
     padding: 10px 20px !important;
   }
+  .save_btn{
+    margin-top: -10px !important;
+  }
+}
+
+@media (max-width: 620px) {
+ #name_br{
+   display: unset !important;
+ }
 }
 
 @media (max-width: 550px) {
@@ -152,6 +185,9 @@
       float: right !important;
       right: 10px !important;
     }
+  }
+  .save_btn{
+    right: 80px !important;
   }
 }
 
@@ -194,4 +230,10 @@ input::-webkit-inner-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
+}
+#name_br{
+  display: none;
+}
+.btn_hidden{
+  display: none !important;
 }

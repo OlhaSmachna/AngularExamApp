@@ -24,9 +24,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-
   public login():void{
-    if(this.isEmptyOrSpaces(this.name) && !this.name.includes('/'))
+    if(this.isEmptyOrSpaces(this.name))
     {
       this.nameValid=true;
       this.invalidNameClass='';
@@ -35,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.nameValid=false;
       this.invalidNameClass='is-invalid';
     }
-    if(this.isEmptyOrSpaces(this.password) && !this.password.includes('/'))
+    if(this.isEmptyOrSpaces(this.password))
     {
       this.passwordValid=true;
       this.invalidPasswordClass='';
@@ -51,7 +50,7 @@ export class LoginComponent implements OnInit {
           if (response.length)
           {
             if(response[0]){
-              this.logger.logIn(response[0].toString());
+              this.logger.logIn(response[0]);
               this.router.navigate(['characters']);
             }
             else {
@@ -67,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   isEmptyOrSpaces(str:string){
-    return !(str === null || str.match(/^ *$/) !== null);
+    return !(str === null || str.match(/^ *$/) !== null) && !str.includes('/');
   }
 
   myAlert(str:string)

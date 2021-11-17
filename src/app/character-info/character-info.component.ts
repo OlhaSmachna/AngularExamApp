@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {DataService} from "../shared/subject.service";
 import { HostListener } from "@angular/core";
 import {UserService} from "../shared/user.service";
+import {Element} from "@angular/compiler";
 
 @Component({
   selector: 'app-characters-info',
@@ -11,7 +12,16 @@ import {UserService} from "../shared/user.service";
   styleUrls: ['./character-info.component.scss', '../characters/bg.scss']
 })
 export class CharacterInfoComponent implements OnInit {
-  public characters: Array<{id: any; name: any; rarity: any; element_name: any; region_name: any;
+  updates: number[] = [];
+  character_id:number=-1;
+  image_size: string = '';
+  btn_hidden: string = 'btn_hidden';
+
+  public characters: Array<{
+    //"personal info"
+    id: any; name: any; rarity: any; element_name: any; region_name: any;
+
+    //materials names
     primary_material: any;
     elemental_stone: any;
     local_material: any;
@@ -22,9 +32,33 @@ export class CharacterInfoComponent implements OnInit {
     mora: any;
     exp_book: any;
     total_progress:number;
+
+    //user stored quantity of materials
+    ascension__elemental_stone: number;
+    ascension__local_material: number;
+    ascension__mora: number;
+    ascension__primary_material__q1: number;
+    ascension__primary_material__q2: number;
+    ascension__primary_material__q3: number;
+    ascension__primary_material__q4: number;
+    ascension__secondary_material__q1: number;
+    ascension__secondary_material__q2: number;
+    ascension__secondary_material__q3: number;
+    lvl__exp_book: number;
+    lvl__mora: number;
+    talents__crown: number;
+    talents__mora: number;
+    talents__secondary_material__q1: number;
+    talents__secondary_material__q2: number;
+    talents__secondary_material__q3: number;
+    talents__talent_book__q1: number;
+    talents__talent_book__q2: number;
+    talents__talent_book__q3: number;
+    talents__talent_material: number;
   }> = [];
-  updates: number[] = [];
-  character_id:number=0;
+
+  //template for needed quantity (same for each char)
+  //should be stored in db... anyway...
   public materials_count_layout={
     'lvl': {
       'mora': 1672000,
@@ -62,22 +96,23 @@ export class CharacterInfoComponent implements OnInit {
       'mora': 4950000,
     }
   }
-  // currentChar: any = {id: any; name: any; rarity: any; element_name: any; region_name: any};
-  public image_size: string = '';
+  //sum of everything in materials_count_layout
+  private max_proggress:number=7043046;
 
   constructor(private server: ServerService, private router:Router, private dataService: DataService, private logger:UserService) {
     this.onResize();
   }
 
   ngOnInit(): void {
-    //localStorage.setItem('selected_char', '');
-    if(localStorage.getItem('selected_char')=='')
+    //getting id of selected char
+    if(sessionStorage.getItem('selected_char')=='')
     {
       this.dataService.updates$.subscribe(updates => this.updates = [...updates]);
       if(!this.updates[0]){this.router.navigate(['characters']);}
-      else {localStorage.setItem('selected_char', this.updates[0].toString());}
+      else {sessionStorage.setItem('selected_char', this.updates[0].toString());}
     }
-    this.character_id=Number(localStorage.getItem('selected_char'));
+    this.character_id=Number(sessionStorage.getItem('selected_char'));
+    //request to server
     this.getCharInfo(this.character_id);
   }
 
@@ -98,7 +133,8 @@ export class CharacterInfoComponent implements OnInit {
           this.router.navigate(['/login']);
         }
         else {
-          this.characters = response.map((ch: { id: any; name: any; rarity: any; element_name: any; region_name: any;
+          this.characters = response.map((ch: {
+            id: any; name: any; rarity: any; element_name: any; region_name: any;
             primary_material: any;
             elemental_stone: any;
             local_material: any;
@@ -107,10 +143,78 @@ export class CharacterInfoComponent implements OnInit {
             talent_material: any;
             crown: any;
             mora: any;
-            total_progress:number;}) => {
+            total_progress:number;
+
+            ascension__elemental_stone: number;
+            ascension__local_material: number;
+            ascension__mora: number;
+            ascension__primary_material__q1: number;
+            ascension__primary_material__q2: number;
+            ascension__primary_material__q3: number;
+            ascension__primary_material__q4: number;
+            ascension__secondary_material__q1: number;
+            ascension__secondary_material__q2: number;
+            ascension__secondary_material__q3: number;
+            lvl__exp_book: number;
+            lvl__mora: number;
+            talents__crown: number;
+            talents__mora: number;
+            talents__secondary_material__q1: number;
+            talents__secondary_material__q2: number;
+            talents__secondary_material__q3: number;
+            talents__talent_book__q1: number;
+            talents__talent_book__q2: number;
+            talents__talent_book__q3: number;
+            talents__talent_material: number;
+          }) => {
+            //set to 0 anything that doesnt have record in db yet
+            ch.ascension__elemental_stone=ch.ascension__elemental_stone??0;
+            ch.ascension__local_material=ch.ascension__local_material??0;
+            ch.ascension__mora=ch.ascension__mora??0;
+            ch.ascension__primary_material__q1=ch.ascension__primary_material__q1??0;
+            ch.ascension__primary_material__q2=ch.ascension__primary_material__q2??0;
+            ch.ascension__primary_material__q3=ch.ascension__primary_material__q3??0;
+            ch.ascension__primary_material__q4=ch.ascension__primary_material__q4??0;
+            ch.ascension__secondary_material__q1=ch.ascension__secondary_material__q1??0;
+            ch.ascension__secondary_material__q2=ch.ascension__secondary_material__q2??0;
+            ch.ascension__secondary_material__q3=ch.ascension__secondary_material__q3??0;
+            ch.lvl__exp_book=ch.lvl__exp_book??0;
+            ch.lvl__mora=ch.lvl__mora??0;
+            ch.talents__crown=ch.talents__crown??0;
+            ch.talents__mora=ch.talents__mora??0;
+            ch.talents__secondary_material__q1=ch.talents__secondary_material__q1??0;
+            ch.talents__secondary_material__q2=ch.talents__secondary_material__q2??0;
+            ch.talents__secondary_material__q3=ch.talents__secondary_material__q3??0;
+            ch.talents__talent_book__q1=ch.talents__talent_book__q1??0;
+            ch.talents__talent_book__q2=ch.talents__talent_book__q2??0;
+            ch.talents__talent_book__q3=ch.talents__talent_book__q3??0;
+            ch.talents__talent_material=ch.talents__talent_material??0;
+
             ch.rarity=Array(ch.rarity);
-            if(ch.id==19)ch.total_progress=50;
-            else ch.total_progress=0;
+            let sum=ch.ascension__elemental_stone+
+            ch.ascension__local_material+
+            ch.ascension__mora+
+            ch.ascension__primary_material__q1+
+            ch.ascension__primary_material__q2+
+            ch.ascension__primary_material__q3+
+            ch.ascension__primary_material__q4+
+            ch.ascension__secondary_material__q1+
+            ch.ascension__secondary_material__q2+
+            ch.ascension__secondary_material__q3+
+            ch.lvl__exp_book+
+            ch.lvl__mora+
+            ch.talents__crown+
+            ch.talents__mora+
+            ch.talents__secondary_material__q1+
+            ch.talents__secondary_material__q2+
+            ch.talents__secondary_material__q3+
+            ch.talents__talent_book__q1+
+            ch.talents__talent_book__q2+
+            ch.talents__talent_book__q3+
+            ch.talents__talent_material;
+            ch.total_progress=sum/this.max_proggress*100;
+            if(ch.total_progress>0 && ch.total_progress<1)ch.total_progress=1;
+            else ch.total_progress=Math.round(ch.total_progress);
             return ch;
           });
         }
@@ -118,7 +222,19 @@ export class CharacterInfoComponent implements OnInit {
     });
   }
 
+  saveBtnShow($event:Event) {
+    //validate value here...
+    this.btn_hidden='';
+  }
 
+  saveUserInfo()
+  {
+    if(this.characters && this.characters[0])this.server.updateUserCharInfo(this.characters[0]);
+    this.btn_hidden='btn_hidden';
+    //this.router.navigate(['/character']);
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['/character']));
+  }
 }
 
 
