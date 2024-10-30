@@ -10,7 +10,6 @@ export class AppComponent implements OnInit{
   title = 'GenshinApp';
 
   constructor(private router: Router) {
-
   }
 
   ngOnInit(): void {

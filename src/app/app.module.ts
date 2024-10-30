@@ -11,6 +11,7 @@ import {ComponentLoaderFactory, PositioningService, TooltipConfig} from "ngx-boo
 import {UserService} from "./shared/user.service";
 import { Err404Component } from './err404/err404.component';
 import { Err500Component } from './err500/err500.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {path: 'login', loadChildren: () => import('./login/login.module').then(m=>m.LoginModule)},
@@ -28,6 +29,7 @@ const routes: Routes = [
         NavbarComponent,
         Err404Component,
         Err500Component,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,

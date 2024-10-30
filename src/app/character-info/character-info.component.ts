@@ -222,9 +222,10 @@ export class CharacterInfoComponent implements OnInit {
     });
   }
 
-  saveBtnShow($event:Event) {
+  saveBtnShow($event:any) {
     //validate value here...
     this.btn_hidden='';
+
   }
 
   saveUserInfo()

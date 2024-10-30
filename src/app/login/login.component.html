@@ -14,19 +14,19 @@
                             <div class="form-floating mb-3">
                               <div class="input-group has-validation"></div>
                               <input [(ngModel)]="name" type="email" class="form-control  {{invalidNameClass}}" id="floatingInput" placeholder="Login" required>
-                              <div *ngIf="!nameValid" class="invalid-feedback">Something`s wrong here</div>
+                              <div *ngIf="!nameValid" class="invalid-feedback">Something's wrong here</div>
                               <label for="floatingInput">Login</label>
                             </div>
                             <div class="form-floating mb-3">
                               <input [(ngModel)]="password" type="password" class="form-control {{invalidPasswordClass}}" id="floatingPassword" placeholder="Password" required>
-                              <div *ngIf="!passwordValid" class="invalid-feedback">Something`s wrong here</div>
+                              <div *ngIf="!passwordValid" class="invalid-feedback">Something's wrong here</div>
                               <label for="floatingPassword">Password</label>
                             </div>
 
-                            <div class="d-grid">
+                            <div class="d-flex">
                               <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" (click)="login()">Sign in</button>
                               <div class="text-center">
-                                <a class="small" href="/signup">Dont have an account?</a>
+                                <a class="small" href="/signup">Don't have an account?</a>
                               </div>
                             </div>
         </div>
