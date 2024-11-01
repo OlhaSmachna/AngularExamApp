@@ -1,8 +1,7 @@
 # GenshinApp
 
-## Project description
-
-This project presents a client-side game-helper style application for Genshin Impact character progression and resource management created as Angular exam submission. This project is not affiliated with miHoYo. Genshin Impact, characters and visual resources are intellectual property of miHoYo.
+This project presents a client-side game-helper style application for Genshin Impact character progression and resource management created as Angular exam submission.
+This project is not affiliated with miHoYo. Genshin Impact, characters and visual resources are intellectual property of miHoYo.
 
 ![Login page](https://res.cloudinary.com/dpp5ocil3/image/upload/v1730276428/portfolio%20images/angular%20exam/LoginPage.png)
 ![Main](https://res.cloudinary.com/dpp5ocil3/image/upload/v1730276311/portfolio%20images/angular%20exam/MainPage.png)
